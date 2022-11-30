@@ -15,46 +15,25 @@ const slideFromLeft = keyframes`
 `
 
 const StyledSection = styled.section`
-  padding: 20px;
+  padding: 10px;
 
   .character-wrapper { overflow: hidden; }
   
   .section-title {
     width: fit-content;
     padding: 5px 15px;
-    border-radius: ${props => props.theme.defaultRadius};
     margin: 0 auto;
     position: relative;
-    color: ${props => props.theme.dark};
+    color: ${props => props.theme.midGray};
     font-size: 26px;
     font-weight: 600;
+    letter-spacing: 2px;
     text-align: center;
-    text-shadow: 0 0 3px ${props => props.theme.white};
     text-transform: capitalize;
-
-    &::before,
-    &::after {
-      content: '';
-      width: 50%;
-      height: 100%;
-      position: absolute;
-      z-index: -1;
-      top: 0;
-      transform: skew(-30deg);
-    }
-
-    &::before {
-      left: 0;
-      background-color: ${props => props.theme.dark};
-    }
-
-    &::after {
-      right: 0;
-      background-color: ${props => props.theme.midGray};
-    }
   }
 
   .character-cards-all {
+    padding: 10px;
     margin: 20px 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -65,7 +44,9 @@ const StyledSection = styled.section`
     padding: 10px;
     border-radius: ${props => props.theme.defaultRadius};
     display: flex;
-    background-color: ${props => props.theme.lightGray};
+    overflow: hidden;
+    background: linear-gradient(45deg, rgba(0,0,0,.1) 50%, rgba(0,0,0,.15) 50%);
+    color: ${props => props.theme.dark};
     flex-direction: column;
 
     &.slide-left {
@@ -95,6 +76,7 @@ const StyledSection = styled.section`
   .loading-text,
   .error-text {
     margin: 20px 0;
+    color: ${props => props.theme.midGray};
     font-size: 22px;
     font-weight: 600;
     text-align: center;
@@ -121,11 +103,13 @@ const StyledSection = styled.section`
         background-color: ${props => props.theme.lightGray};
         pointer-events: none;
       }
+    }
+  }
 
-      &:hover {
-        background-color: ${props => props.theme.dark};
-        color: ${props => props.theme.lightGray};
-      }
+  @media only screen and (min-width: 1024px) {
+    .pagination-controls .control:hover {
+      background-color: ${props => props.theme.dark};
+      color: ${props => props.theme.lightGray};
     }
   }
 
